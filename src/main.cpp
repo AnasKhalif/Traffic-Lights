@@ -1,18 +1,40 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+int ledm = 18; // Pin LED Merah
+int ledk = 5;  // Pin LED Kuning
+int ledh = 17; // Pin LED Hijau
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115100);
+  pinMode(ledm, OUTPUT);
+  pinMode(ledk, OUTPUT);
+  pinMode(ledh, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  digitalWrite(ledm, HIGH);
+  digitalWrite(ledk, LOW);
+  digitalWrite(ledh, LOW);
+  Serial.println("\nMerah Menyala");
+  Serial.println("Kuning Mati");
+  Serial.println("Hijau Mati");
+  delay(30000); // 30 detik
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  // Kuning Menyala
+  digitalWrite(ledm, LOW);
+  digitalWrite(ledk, HIGH);
+  digitalWrite(ledh, LOW);
+  Serial.println("\nMerah Mati");
+  Serial.println("Kuning Menyala");
+  Serial.println("Hijau Mati");
+  delay(3000); // 3 detik
+
+  // Hijau Menyala
+  digitalWrite(ledm, LOW);
+  digitalWrite(ledk, LOW);
+  digitalWrite(ledh, HIGH);
+  Serial.println("\nMerah Mati");
+  Serial.println("Kuning Mati");
+  Serial.println("Hijau Menyala");
+  delay(20000); // 20 detik
 }
